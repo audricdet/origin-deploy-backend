@@ -4,7 +4,7 @@ import passport from 'passport'
 import { Strategy as FacebookStrategy } from 'passport-facebook';
 import session from 'express-session'
 import * as dotenv from 'dotenv'
-import client from '../backend/src/db/connect.mjs' 
+import client from './src/db/connect.mjs' 
 import facebookRouter from './src/api/auth/facebookAuth.mjs'
 import googleRouter from './src/api/auth/googleAuth.mjs';
 import loginRouter from './src/api/auth/login.mjs'
