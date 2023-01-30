@@ -10,7 +10,7 @@ const facebookRouter = express.Router()
 passport.use(new FacebookStrategy({
     clientID : process.env.FACEBOOK_APP_ID,
     clientSecret : process.env.FACEBOOK_APP_SECRET, 
-    callbackURL : 'http://localhost:3000/auth/f/facebook/callback'
+    callbackURL : 'http://origin-app.herokuapp.com/auth/f/facebook/callback'
 },
 async function(accessToken, refreshToken, profile, done) {
 
