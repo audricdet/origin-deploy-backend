@@ -6,7 +6,7 @@ CREATE TABLE "users"(
 ALTER TABLE
     "users" ADD PRIMARY KEY("id");
 CREATE TABLE "profile"(
-    "id" BIGINT NOT NULL,
+    "id" SERIAL NOT NULL,
     "name" VARCHAR(255),
     "lastname" VARCHAR(255),
     "dateOfBirth" DATE,
@@ -32,14 +32,14 @@ CREATE TABLE "user_per_family"(
 ALTER TABLE
     "user_per_family" ADD PRIMARY KEY("profile_id");
 CREATE TABLE "family"(
-    "id" BIGINT NOT NULL,
+    "id" SERIAL NOT NULL,
     "name" VARCHAR(255) NOT NULL,
     "admin_id" BIGINT NOT NULL
 );
 ALTER TABLE
     "family" ADD PRIMARY KEY("id");
 CREATE TABLE "event"(
-    "id" BIGINT NOT NULL,
+    "id" SERIAL NOT NULL,
     "date" DATE NOT NULL,
     "descripition" VARCHAR(255) NOT NULL,
     "profile_id" BIGINT NOT NULL
