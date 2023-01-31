@@ -16,6 +16,7 @@ async function(accessToken, refreshToken, profile, done) {
 
     try {
         let user_profile  = await client.query(`SELECT * FROM profile WHERE facebook_id = '${profile.id}'`)
+        console.log("here")
         console.log(profile.id)
         console.log(user_profile)
         console.log(user_profile.length);
