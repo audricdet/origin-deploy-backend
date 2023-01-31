@@ -6,20 +6,28 @@ const { Client } = pkg;
 
 
 const client = new Client({
-    host: "ec2-34-247-72-29.eu-west-1.compute.amazonaws.com",
-    database: process.env.DATABASE_URL,
-    port: 5432,
-    user: 'fenwhcjlhdxhab',
-    password: process.env.DATABASE_PWD,
-})
-
-client.connect((err) => {
-if (err) {
-    console.error('connection error', err.stack)
-} else {
-    console.log('connected')
+connectionString: process.env.DATABASE_URL,
+ssl: {
+    rejectUnauthorized: false
 }
-})
+});
+client.connect();
+
+// const client = new Client({
+//     host: "ec2-34-247-72-29.eu-west-1.compute.amazonaws.com",
+//     database: process.env.DATABASE_URL,
+//     port: 5432,
+//     user: 'fenwhcjlhdxhab',
+//     password: process.env.DATABASE_PWD,
+// })
+
+// client.connect((err) => {
+// if (err) {
+//     console.error('connection error', err.stack)
+// } else {
+//     console.log('connected')
+// }
+// })
 
 
 // const client = new Client({
