@@ -28,7 +28,11 @@ passport.use(new GoogleStrategy({
                 return done(null, {redirect: `/profile/${user_profile.rows[0].id}`})
             } else {
                 // User is logging in for the first time, redirect to create-profile page
+                let user = await client.query(`INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *`, [ profile.emails[0].value, "guyguyguyguygugu"])
+                console.log(user)
+                await client.query(`INSERT INTO profile (user_id, google_id) VALUES ($1, $2) RETURNING *`, [ user.id, profile.id])
                 return done(null, {redirect: '/create-profile'})
+                
             }
         } catch (error) {
             console.log(error);
