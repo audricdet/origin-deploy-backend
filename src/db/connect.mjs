@@ -11,7 +11,7 @@ ssl: {
     rejectUnauthorized: false
 }
 });
-client.connect();
+// client.connect();
 
 // const client = new Client({
 //     host: "ec2-34-247-72-29.eu-west-1.compute.amazonaws.com",
@@ -21,13 +21,13 @@ client.connect();
 //     password: process.env.DATABASE_PWD,
 // })
 
-// client.connect((err) => {
-// if (err) {
-//     console.error('connection error', err.stack)
-// } else {
-//     console.log('connected')
-// }
-// })
+client.connect((err) => {
+if (err) {
+    console.error('connection error', err.stack)
+} else {
+    console.log('connected')
+}
+})
 
 
 // const client = new Client({
