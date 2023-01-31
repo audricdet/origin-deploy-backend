@@ -6,7 +6,8 @@ const { Client } = pkg;
 
 
 const client = new Client({
-    host: process.env.DATABASE_URL,
+    host: "ec2-34-247-72-29.eu-west-1.compute.amazonaws.com",
+    database: process.env.DATABASE_URL,
     port: 5432,
     user: 'fenwhcjlhdxhab',
     password: process.env.DATABASE_PWD,
