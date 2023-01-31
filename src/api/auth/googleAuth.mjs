@@ -30,7 +30,7 @@ passport.use(new GoogleStrategy({
                 // User is logging in for the first time, redirect to create-profile page
                 let user = await client.query(`INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *`, [ profile.emails[0].value, "guyguyguyguygugu"])
                 console.log(user)
-                await client.query(`INSERT INTO profile (user_id, google_id) VALUES ($1, $2) RETURNING *`, [ user.id, profile.id])
+                await client.query(`INSERT INTO profile (user_id, google_id) VALUES ($1, $2) RETURNING *`, [ user.rows[0].id, profile.id])
                 return done(null, {redirect: '/create-profile'})
                 
             }
