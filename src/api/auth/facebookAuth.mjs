@@ -22,6 +22,12 @@ async function(accessToken, refreshToken, profile, done) {
         if (user_profile.rows.length > 0) {
             return done(null, {redirect: `/profile/${user_profile.rows[0].id}`})
         } else {
+            try {
+                let user = await client.query(`INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *`, [profile.emails[0].value, "guyguyguyguygugu"])
+                //await client.query(`INSERT INTO profile (facebook_id) VALUES ('${profile.id}')`)
+            } catch (error) {
+                console.log(error)
+            }
             return done(null, {redirect: '/create-profile'})
         }
     } catch (error) {
