@@ -26,6 +26,10 @@ app.use('/auth/g', googleRouter)
 app.use('/', loginRouter)
 app.use('/', registerRouter)
 
+app.get('/', (req, res) => {
+    res.sendStatus(200)
+})
+
 app.listen(process.env.PORT || 3000, () => {
     console.log('Origin app listening on port 3000!');
 });
