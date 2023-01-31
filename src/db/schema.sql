@@ -9,7 +9,7 @@ CREATE TABLE "profile"(
     "id" SERIAL NOT NULL,
     "name" VARCHAR(255),
     "lastname" VARCHAR(255),
-    "date_of_irth" DATE,
+    "date_of_birth" DATE,
     "place_of_birth" VARCHAR(255),
     "school" VARCHAR(255),
     "work" VARCHAR(255),
