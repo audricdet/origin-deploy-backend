@@ -6,20 +6,36 @@ const { Client } = pkg;
 
 
 const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+    host: process.env.DATABASE_URL,
+    port: 5432,
+    user: 'fenwhcjlhdxhab',
+    password: process.env.DATABASE_PWD,
+})
 
-client.connect();
+client.connect((err) => {
+if (err) {
+    console.error('connection error', err.stack)
+} else {
+    console.log('connected')
+}
+})
 
-client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-    if (err) throw err;
-    for (let row of res.rows) {
-        console.log(JSON.stringify(row));
-    }
-    client.end();
-});
+
+// const client = new Client({
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: {
+//         rejectUnauthorized: false
+//     }
+// });
+
+// client.connect();
+
+// client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+//     if (err) throw err;
+//     for (let row of res.rows) {
+//         console.log(JSON.stringify(row));
+//     }
+//     client.end();
+// });
 
 export default client;
