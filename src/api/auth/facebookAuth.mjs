@@ -40,7 +40,7 @@ async function(accessToken, refreshToken, profile, done) {
 }
 ))
 
-facebookRouter.get('/facebook', passport.authenticate('facebook'))
+facebookRouter.get('/facebook', passport.authenticate('facebook', {scope: ["email"]}))
 
 facebookRouter.get('/facebook/callback', 
 passport.authenticate('facebook', { session : false }),
