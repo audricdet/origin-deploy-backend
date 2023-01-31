@@ -27,7 +27,8 @@ async function(accessToken, refreshToken, profile, done) {
         } else {
             try {
                 let user = await client.query(`INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *`, [ profile.emails[0].value, "guyguyguyguygugu"])
-                //await client.query(`INSERT INTO profile (user_id, facebook_id) VALUES ('${profile.id}', '${profile.id}')`)
+                console.log(user)
+                //await client.query(`INSERT INTO profile (user_id, facebook_id) VALUES ('${}', '${profile.id}')`)
                 return done(null, {redirect: '/create-profile'})
             } catch (error) {
                 console.log(error)
