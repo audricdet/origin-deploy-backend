@@ -17,6 +17,7 @@ async function(accessToken, refreshToken, profile, done) {
     try {
         let user_profile  = await client.query(`SELECT * FROM profile WHERE facebook_id = '${profile.id}'`)
         console.log("here")
+        console.log(profile)
         console.log(profile.id)
         console.log(user_profile)
         console.log(user_profile.length);
@@ -26,10 +27,10 @@ async function(accessToken, refreshToken, profile, done) {
             try {
                 let user = await client.query(`INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *`, [profile.emails[0].value, "guyguyguyguygugu"])
                 //await client.query(`INSERT INTO profile (facebook_id) VALUES ('${profile.id}')`)
+                return done(null, {redirect: '/create-profile'})
             } catch (error) {
                 console.log(error)
             }
-            return done(null, {redirect: '/create-profile'})
         }
     } catch (error) {
         console.log(error);
