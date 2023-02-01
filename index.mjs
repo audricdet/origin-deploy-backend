@@ -8,6 +8,10 @@ import facebookRouter from './src/api/auth/facebookAuth.mjs'
 import googleRouter from './src/api/auth/googleAuth.mjs';
 import loginRouter from './src/api/auth/login.mjs'
 import registerRouter from './src/api/auth/register.mjs'
+
+import getFamilyInfos from './controllers/getFamilyInfos.mjs';
+import getAllFamilyMembers from './controllers/getAllFamilyMembers.mjs';
+
 const app = express() 
 const PORT = 3000
 const router = express.Router()
@@ -36,6 +40,8 @@ app.listen(process.env.PORT || 3000, () => {
 
 // REQUEST 
 
+app.get("/family/:name", getFamilyInfos)
+app.get("/family/:name/members", getAllFamilyMembers)
 
 
 
