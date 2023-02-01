@@ -19,3 +19,4 @@ const getFamilyInfos = (request, response) => {
 };
 
 export default getFamilyInfos
+

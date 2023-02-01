@@ -34,7 +34,7 @@ ALTER TABLE
 CREATE TABLE "family"(
     "id" SERIAL NOT NULL,
     "name" VARCHAR(255) NOT NULL,
-    "admin_id" BIGINT NOT NULL
+    "admin_id" BIGINT
 );
 ALTER TABLE
     "family" ADD PRIMARY KEY("id");
