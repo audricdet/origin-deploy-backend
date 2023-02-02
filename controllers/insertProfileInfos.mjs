@@ -1,6 +1,6 @@
 import client from "../src/db/connect.mjs";
 
-const insertProfileInfos = (request, response) => {
+const insertProfileInfos = async (request, response) => {
     console.log(request.body)
     const {
         name,
@@ -20,7 +20,7 @@ const insertProfileInfos = (request, response) => {
         apple_id
     } = request.body;
 
-    client.query(
+await client.query(
         `INSERT INTO profile (name,
             lastname,
             date_of_birth,
@@ -41,8 +41,11 @@ const insertProfileInfos = (request, response) => {
         (error, result) => {
             if (error) {
                 throw error;
+            }else{
+                console.log(result)
+                response.status(201).send;
             }
-            response.status(201).send;
+            
         }
     );
 };
