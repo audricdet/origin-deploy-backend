@@ -5,7 +5,7 @@ import { Strategy as FacebookStrategy } from 'passport-facebook';
 import session from 'express-session'
 import * as dotenv from 'dotenv'
 import client from './src/db/connect.mjs' 
-import cookieParser from 'cookie-parser';
+import cookie from 'cookie-parser';
 
 //IMPORT ROUTERS
 import facebookRouter from './src/api/auth/facebookAuth.mjs'
