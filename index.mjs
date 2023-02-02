@@ -11,6 +11,7 @@ import registerRouter from './src/api/auth/register.mjs'
 
 import getFamilyInfos from './controllers/getFamilyInfos.mjs';
 import getAllFamilyMembers from './controllers/getAllFamilyMembers.mjs';
+import GetAllProfileInfos from './controllers/getAllProfileInfos.mjs';
 
 const app = express() 
 const PORT = 3000
@@ -42,6 +43,7 @@ app.listen(process.env.PORT || 3000, () => {
 
 app.get("/family/:name", getFamilyInfos)
 app.get("/family/:name/members", getAllFamilyMembers)
+app.get("/profile/:id", GetAllProfileInfos)
 
 
 
