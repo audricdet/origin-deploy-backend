@@ -12,6 +12,9 @@ import googleRouter from './src/api/auth/googleAuth.mjs';
 import loginRouter from './src/api/auth/login.mjs'
 import registerRouter from './src/api/auth/register.mjs'
 
+// IMPORT MIDDLEWARE
+import auth from './src/middleware/verifyToken.mjs'
+
 //IMPORT CONTROLLERS
 import getFamilyInfos from './controllers/getFamilyInfos.mjs';
 import getAllFamilyMembers from './controllers/getAllFamilyMembers.mjs';
@@ -47,13 +50,13 @@ app.listen(process.env.PORT || 3000, () => {
 
 // REQUEST 
 //GET 
-app.get("/family/:name", getFamilyInfos)
-app.get("/family/:name/members", getAllFamilyMembers)
-app.get("/profile/:id", GetAllProfileInfos)
+app.get("/family/:name", auth, getFamilyInfos)
+app.get("/family/:name/members", auth, getAllFamilyMembers)
+app.get("/profile/:id", auth, GetAllProfileInfos)
 
 //POST 
-app.post("/family/:name/addUser", addUserToFamily)
-app.post("/profile/:id/insertProfileInfos", insertProfileInfos)
+app.post("/family/:name/addUser", auth, addUserToFamily)
+app.post("/profile/:id/insertProfileInfos", auth, insertProfileInfos)
 
 
 

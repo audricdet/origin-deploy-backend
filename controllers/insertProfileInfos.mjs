@@ -41,8 +41,7 @@ const insertProfileInfos = (request, response) => {
             if (error) {
                 throw error;
             }
-
-            response.status(201).send(`Profile ${result.name} added`);
+            response.status(201).send;
         }
     );
 };
