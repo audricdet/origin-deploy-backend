@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import cookieParser from "cookie-parser";
+import cookie from "cookie-parser";
 
 const auth = async (request, response, next) => {
     //   get the token from the authorization header
