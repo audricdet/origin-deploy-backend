@@ -42,7 +42,7 @@ const insertProfileInfos = (request, response) => {
                 throw error;
             }
 
-            response.status(201).send(`Profile added with ID: ${result.insertId}`);
+            response.status(201).send(`Profile ${result.name} added`);
         }
     );
 };
