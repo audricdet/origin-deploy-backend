@@ -14,10 +14,11 @@ const register = async (request, response) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Write a SQL query to insert the new user into the database
-    const emailsFromDB = await client.query(`SELECT email FROM users WHERE email = $1`, [email]);
+    
+    const verifyEmail = client.query("SELECT FROM users WHERE email = $1", [email])
 
-    if (emailsFromDB.rows.length === 1) {
-        return res.send({ error: 'This email adress already exist' })
+    if (verifyEmail.rows.length > 0) {
+        return response.json({error : 'Email already exists'})
     }
 
     client.query(
