@@ -6,7 +6,6 @@ const registerRouter = express.Router()
 // Define a function for creating a new user
 const register = async (request, response) => {
     const {
-        id,
         email,
         password
     } = request.body;
@@ -17,8 +16,8 @@ const register = async (request, response) => {
     // Write a SQL query to insert the new user into the database
 
     client.query(
-        "INSERT INTO users (id, email, password) VALUES ($1, $2, $3) RETURNING *",
-        [id, email, hashedPassword],
+        "INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *",
+        [email, hashedPassword],
         (error, results) => {
             if (error) {
                 throw error;
