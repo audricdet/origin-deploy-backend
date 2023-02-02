@@ -7,6 +7,7 @@ import * as dotenv from 'dotenv'
 import client from './src/db/connect.mjs' 
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 //IMPORT ROUTERS
 import facebookRouter from './src/api/auth/facebookAuth.mjs'
@@ -35,6 +36,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
 app.use(passport.initialize())
 app.use(express.json())
+
+//CORS
+const whitelist = ["https://origin-bcode.netlify.app"]
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (!origin || whitelist.indexOf(origin) !== -1) {
+        callback(null, true)
+        } else {
+        callback(new Error("Not allowed by CORS"))
+    }
+    },
+    credentials: true,
+}
+app.use(cors(corsOptions))
 
 
 // FACEBOOK
