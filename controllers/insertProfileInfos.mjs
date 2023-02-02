@@ -1,6 +1,7 @@
 import client from "../src/db/connect.mjs";
 
 const insertProfileInfos = (request, response) => {
+    console.log(request.body)
     const {
         name,
         lastname,
