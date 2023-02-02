@@ -28,6 +28,8 @@ const PORT = 3000
 const router = express.Router()
 dotenv.config()
 
+//USE 
+app.use(cookieParser())
 app.use(passport.initialize())
 app.use(express.json())
 
