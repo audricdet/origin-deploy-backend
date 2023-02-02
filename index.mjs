@@ -5,7 +5,8 @@ import { Strategy as FacebookStrategy } from 'passport-facebook';
 import session from 'express-session'
 import * as dotenv from 'dotenv'
 import client from './src/db/connect.mjs' 
-import cookie from 'cookie-parser';
+import cookieParser from 'cookie-parser'
+import bodyParser from 'body-parser'
 
 //IMPORT ROUTERS
 import facebookRouter from './src/api/auth/facebookAuth.mjs'
@@ -29,7 +30,9 @@ const router = express.Router()
 dotenv.config()
 
 //USE 
-app.use(cookie())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser())
 app.use(passport.initialize())
 app.use(express.json())
 
