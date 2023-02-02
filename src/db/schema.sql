@@ -19,7 +19,7 @@ CREATE TABLE "profile"(
     "user_id" BIGINT,
     "profile_picture" VARCHAR(255),
     "private" BOOLEAN,
-    "facebook_id" BIGINT,
+    "facebook_id" VARCHAR(255),
     "google_id" VARCHAR(255),
     "apple_id" BIGINT 
 );
