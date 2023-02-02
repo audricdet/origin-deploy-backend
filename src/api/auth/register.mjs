@@ -16,10 +16,10 @@ const register = async (request, response) => {
     // Write a SQL query to insert the new user into the database
     
     const verifyEmail = client.query("SELECT FROM users WHERE email = $1", [email])
-
-    if (verifyEmail.rows.length > 0) {
-        return response.json({error : 'Email already exists'})
-    }
+    console.log(verifyEmail)
+    // if (verifyEmail.rows.length > 0) {
+    //     return response.json({error : 'Email already exists'})
+    // }
 
     client.query(
         "INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *",
