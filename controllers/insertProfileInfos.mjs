@@ -14,7 +14,7 @@ const insertProfileInfos = (request, response) => {
         user_id, 
         profile_picture,
         prive, 
-        facebbok_id,
+        facebook_id,
         google_id, 
         apple_id
     } = request.body;
@@ -32,11 +32,11 @@ const insertProfileInfos = (request, response) => {
             user_id, 
             profile_picture,
             prive, 
-            facebbok_id,
+            facebook_id,
             google_id, 
             apple_id)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)`,
-        [name, lastname, date_of_birth, place_of_birth, school, work, hobby, country, bio, user_id, profile_picture, prive, facebbok_id, google_id, apple_id],
+        [name, lastname, date_of_birth, place_of_birth, school, work, hobby, country, bio, user_id, profile_picture, prive, facebook_id, google_id, apple_id],
         (error, result) => {
             if (error) {
                 throw error;
