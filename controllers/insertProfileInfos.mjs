@@ -43,7 +43,7 @@ await client.query(
                 throw error;
             }else{
                 console.log(result)
-                response.status(201).send;
+                response.send({result: result})
             }
             
         }
