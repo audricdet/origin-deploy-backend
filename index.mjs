@@ -38,20 +38,10 @@ app.use(passport.initialize())
 app.use(express.json())
 
 //CORS
-const domainsFromEnv = process.env.CORS_DOMAINS || ""
-
-const whitelist = domainsFromEnv.split(",").map(item => item.trim())
-
 const corsOptions = {
-    origin: function (origin, callback) {
-    if (!origin || whitelist.indexOf(origin) !== -1) {
-        callback(null, true)
-    } else {
-        callback(new Error("Not allowed by CORS"))
-    }
-},
-    credentials: true,
-}
+	origin: 'http://localhost:3000',
+	optionsSuccessStatus: 200
+};
 app.use(cors(corsOptions))
 
 
